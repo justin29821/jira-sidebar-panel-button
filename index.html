@@ -1,50 +1,55 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <style>
-  html, body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-  font-family: "Segoe UI", Roboto, sans-serif;
-  box-sizing: border-box;
-  overflow: hidden; /* ⬅️ prevents scrollbars & white bars */
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jira Sidebar Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-amber-100 to-orange-200 font-sans p-4 box-border h-full">
 
-  .button-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
+  <div class="bg-white shadow-xl rounded-xl p-4 space-y-4 h-full flex flex-col justify-between">
+    <!-- STATUS PANEL -->
+    <div>
+      <h1 class="text-xl font-semibold text-gray-800 mb-2">🎬 Project Status</h1>
+      <p class="text-gray-600"><strong>Campaign:</strong> Summer Promo 2025</p>
+      <p class="text-gray-600"><strong>Deadline:</strong> <span class="text-emerald-600">May 5, 2025</span></p>
 
-  .trigger-button {
-    background-color: #0052CC;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
+      <div class="mt-4">
+        <p class="text-sm text-gray-500 mb-1">Progress</p>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+          <div class="bg-blue-600 h-3 rounded-full" style="width: 72%;"></div>
+        </div>
+        <p class="text-right text-sm mt-1 text-gray-600">72% Complete</p>
+      </div>
 
-  .trigger-button:hover {
-    background-color: #0747A6;
-    transform: scale(1.05);
-  }
+      <div class="mt-4">
+        <p class="text-sm text-gray-500 mb-1">Budget Used</p>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+          <div class="bg-red-500 h-3 rounded-full" style="width: 64%;"></div>
+        </div>
+        <p class="text-right text-sm mt-1 text-gray-600">$3,200 / $5,000</p>
+      </div>
 
-  .trigger-button:disabled {
-    background-color: #A5ADBA;
-    cursor: not-allowed;
-  }
-</style>
-  
+      <div class="mt-4">
+        <p class="text-sm text-gray-500 mb-1">Client Feedback</p>
+        <div class="bg-gray-100 rounded-lg p-3 text-sm text-gray-700 border border-gray-300">
+          “Waiting on the final audio mix — everything else looks great!”
+        </div>
+      </div>
+    </div>
+
+    <!-- TRIGGER BUTTON -->
+    <div class="pt-2">
+      <button
+        onclick="triggerAction(this)"
+        class="bg-blue-600 text-white w-full py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition disabled:opacity-50"
+      >
+        Trigger ScriptRunner Action
+      </button>
+    </div>
+  </div>
+
   <script>
     async function triggerAction(button) {
       button.disabled = true;
@@ -56,8 +61,8 @@
           method: "POST"
         });
 
-        const data = await response.json();
-        alert(`✅ ${data.status}`);
+        const result = await response.json();
+        alert(`✅ ${result.status}`);
       } catch (err) {
         alert("❌ Something went wrong");
       } finally {
@@ -66,12 +71,5 @@
       }
     }
   </script>
-</head>
-<body>
-  <div class="button-container">
-    <button class="trigger-button" onclick="triggerAction(this)">
-      Trigger ScriptRunner Action
-    </button>
-  </div>
 </body>
 </html>
