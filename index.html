@@ -66,16 +66,21 @@
   </div>
 
   <!-- Auto-resize script for Jira sidebar iframe -->
-  <script>
-    function autoResizePanel() {
-      const height = document.body.scrollHeight + 20;
-      if (window.AP && AP.resize) {
-        AP.resize('100%', height + 'px');
-      }
+<script>
+  function tryResize(retries = 5) {
+    if (window.AP && typeof AP.resize === "function") {
+      const height = document.body.scrollHeight + 50; // +50 for padding buffer
+      AP.resize("100%", height + "px");
+    } else if (retries > 0) {
+      setTimeout(() => tryResize(retries - 1), 300); // Retry in 300ms
     }
+  }
 
-    window.addEventListener('load', autoResizePanel);
-  </script>
+  window.addEventListener("load", () => {
+    tryResize();
+  });
+</script>
+
 
 </body>
 </html>
