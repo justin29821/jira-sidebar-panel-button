@@ -1,20 +1,70 @@
 <html>
 <head>
+  <style>
+    body {
+      font-family: "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 10px;
+      background-color: #f4f5f7;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .trigger-button {
+      background-color: #0052CC;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .trigger-button:hover {
+      background-color: #0747A6;
+    }
+
+    .trigger-button:disabled {
+      background-color: #A5ADBA;
+      cursor: not-allowed;
+    }
+  </style>
+
   <script>
-    async function triggerAction() {
-      const params = new URLSearchParams(window.location.search);
-      const issueId = params.get("issueId");
+    async function triggerAction(button) {
+      button.disabled = true;
+      button.innerText = "Working...";
 
-      const response = await fetch(`/rest/scriptrunner/latest/custom/sidebarButtonTrigger?issueId=${issueId}`, {
-        method: "POST"
-      });
+      const issueId = new URLSearchParams(window.location.search).get("issueId");
+      try {
+        const response = await fetch(`/rest/scriptrunner/latest/custom/sidebarButtonTrigger?issueId=${issueId}`, {
+          method: "POST"
+        });
 
-      const result = await response.json();
-      alert(result.status);
+        const data = await response.json();
+        alert(`✅ ${data.status}`);
+      } catch (err) {
+        alert("❌ Something went wrong");
+      } finally {
+        button.disabled = false;
+        button.innerText = "Trigger ScriptRunner Action";
+      }
     }
   </script>
 </head>
 <body>
-  <button onclick="triggerAction()">Trigger ScriptRunner Action</button>
+  <div class="button-container">
+    <button class="trigger-button" onclick="triggerAction(this)">
+      Trigger ScriptRunner Action
+    </button>
+  </div>
 </body>
 </html>
