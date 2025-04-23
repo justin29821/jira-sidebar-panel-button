@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Snapshot</title>
+  <title>Jira Sidebar Status Panel</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans p-4 h-full box-border">
-  <div class="bg-white rounded-xl shadow-md p-6 space-y-6 max-w-full">
+<body class="bg-gray-100 font-sans p-4 h-full box-border overflow-hidden">
+
+  <div class="bg-white rounded-xl shadow-md p-6 space-y-6 w-full max-w-full">
     
     <!-- Header -->
     <div>
@@ -63,5 +64,18 @@
       </div>
     </div>
   </div>
+
+  <!-- Auto-resize script for Jira sidebar iframe -->
+  <script>
+    function autoResizePanel() {
+      const height = document.body.scrollHeight + 20;
+      if (window.AP && AP.resize) {
+        AP.resize('100%', height + 'px');
+      }
+    }
+
+    window.addEventListener('load', autoResizePanel);
+  </script>
+
 </body>
 </html>
