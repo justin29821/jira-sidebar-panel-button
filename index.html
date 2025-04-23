@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jira Sidebar Panel</title>
+  <title>Jira Sidebar Status Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-br from-amber-100 to-orange-200 font-sans p-4 box-border h-full">
@@ -38,38 +38,7 @@
         </div>
       </div>
     </div>
-
-    <!-- TRIGGER BUTTON -->
-    <div class="pt-2">
-      <button
-        onclick="triggerAction(this)"
-        class="bg-blue-600 text-white w-full py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition disabled:opacity-50"
-      >
-        Trigger ScriptRunner Action
-      </button>
-    </div>
   </div>
 
-  <script>
-    async function triggerAction(button) {
-      button.disabled = true;
-      button.innerText = "Working...";
-
-      const issueId = new URLSearchParams(window.location.search).get("issueId");
-      try {
-        const response = await fetch(`/rest/scriptrunner/latest/custom/sidebarButtonTrigger?issueId=${issueId}`, {
-          method: "POST"
-        });
-
-        const result = await response.json();
-        alert(`✅ ${result.status}`);
-      } catch (err) {
-        alert("❌ Something went wrong");
-      } finally {
-        button.disabled = false;
-        button.innerText = "Trigger ScriptRunner Action";
-      }
-    }
-  </script>
 </body>
 </html>
