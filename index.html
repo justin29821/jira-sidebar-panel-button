@@ -2,20 +2,24 @@
 <head>
   <style>
   html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-    font-family: "Segoe UI", Roboto, sans-serif;
-    box-sizing: border-box;
-  }
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  font-family: "Segoe UI", Roboto, sans-serif;
+  box-sizing: border-box;
+  overflow: hidden; /* ⬅️ prevents scrollbars & white bars */
+}
 
   .button-container {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
 
   .trigger-button {
     background-color: #0052CC;
