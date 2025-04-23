@@ -1,0 +1,20 @@
+<html>
+<head>
+  <script>
+    async function triggerAction() {
+      const params = new URLSearchParams(window.location.search);
+      const issueId = params.get("issueId");
+
+      const response = await fetch(`/rest/scriptrunner/latest/custom/sidebarButtonTrigger?issueId=${issueId}`, {
+        method: "POST"
+      });
+
+      const result = await response.json();
+      alert(result.status);
+    }
+  </script>
+</head>
+<body>
+  <button onclick="triggerAction()">Trigger ScriptRunner Action</button>
+</body>
+</html>
