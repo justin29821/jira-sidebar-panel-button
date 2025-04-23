@@ -3,42 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jira Sidebar Status Dashboard</title>
+  <title>Project Snapshot</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-amber-100 to-orange-200 font-sans p-4 box-border h-full">
-
-  <div class="bg-white shadow-xl rounded-xl p-4 space-y-4 h-full flex flex-col justify-between">
-    <!-- STATUS PANEL -->
+<body class="bg-gray-100 font-sans p-4 h-full box-border">
+  <div class="bg-white rounded-xl shadow-md p-6 space-y-6 max-w-full">
+    
+    <!-- Header -->
     <div>
-      <h1 class="text-xl font-semibold text-gray-800 mb-2">🎬 Project Status</h1>
-      <p class="text-gray-600"><strong>Campaign:</strong> Summer Promo 2025</p>
-      <p class="text-gray-600"><strong>Deadline:</strong> <span class="text-emerald-600">May 5, 2025</span></p>
+      <h1 class="text-xl font-semibold text-gray-900">Fintech Mobile App Redesign</h1>
+    </div>
 
-      <div class="mt-4">
-        <p class="text-sm text-gray-500 mb-1">Progress</p>
-        <div class="w-full bg-gray-200 rounded-full h-3">
-          <div class="bg-blue-600 h-3 rounded-full" style="width: 72%;"></div>
-        </div>
-        <p class="text-right text-sm mt-1 text-gray-600">72% Complete</p>
+    <!-- Meta info -->
+    <div class="grid grid-cols-2 gap-4 text-sm text-gray-700">
+      <div>
+        <p class="font-medium text-gray-500">Created Time</p>
+        <p>February 12, 2025 — 10:35 AM</p>
       </div>
-
-      <div class="mt-4">
-        <p class="text-sm text-gray-500 mb-1">Budget Used</p>
-        <div class="w-full bg-gray-200 rounded-full h-3">
-          <div class="bg-red-500 h-3 rounded-full" style="width: 64%;"></div>
-        </div>
-        <p class="text-right text-sm mt-1 text-gray-600">$3,200 / $5,000</p>
+      <div>
+        <p class="font-medium text-gray-500">Status</p>
+        <span class="inline-flex items-center rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-800">
+          ● In Research
+        </span>
       </div>
-
-      <div class="mt-4">
-        <p class="text-sm text-gray-500 mb-1">Client Feedback</p>
-        <div class="bg-gray-100 rounded-lg p-3 text-sm text-gray-700 border border-gray-300">
-          “Waiting on the final audio mix — everything else looks great!”
+      <div>
+        <p class="font-medium text-gray-500">Priority</p>
+        <span class="inline-flex items-center rounded-full bg-blue-100 px-2 py-1 text-xs font-medium text-blue-700">
+          Low
+        </span>
+      </div>
+      <div>
+        <p class="font-medium text-gray-500">Due Date</p>
+        <p>Feb 12, 2025 – Feb 22, 2025</p>
+      </div>
+      <div>
+        <p class="font-medium text-gray-500">Tags</p>
+        <div class="flex flex-wrap gap-2 mt-1">
+          <span class="bg-gray-200 text-gray-800 text-xs font-medium px-2 py-0.5 rounded">Task</span>
+          <span class="bg-gray-200 text-gray-800 text-xs font-medium px-2 py-0.5 rounded">Wireframe</span>
+          <span class="bg-gray-200 text-gray-800 text-xs font-medium px-2 py-0.5 rounded">Homepage</span>
+        </div>
+      </div>
+      <div>
+        <p class="font-medium text-gray-500">Assignees</p>
+        <div class="mt-1 flex -space-x-2">
+          <img class="h-7 w-7 rounded-full border-2 border-white" src="https://i.pravatar.cc/40?u=a1" alt="User 1">
+          <img class="h-7 w-7 rounded-full border-2 border-white" src="https://i.pravatar.cc/40?u=a2" alt="User 2">
+          <img class="h-7 w-7 rounded-full border-2 border-white" src="https://i.pravatar.cc/40?u=a3" alt="User 3">
         </div>
       </div>
     </div>
-  </div>
 
+    <!-- Description -->
+    <div>
+      <p class="font-medium text-gray-500 text-sm mb-1">Project Description</p>
+      <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm text-gray-700 leading-relaxed">
+        This Finance Mobile App redesign aims to enhance user experience by streamlining navigation and improving accessibility.
+        Users will enjoy a modern interface, intuitive features, and seamless transactions, making financial management easier than ever.
+      </div>
+    </div>
+  </div>
 </body>
 </html>
